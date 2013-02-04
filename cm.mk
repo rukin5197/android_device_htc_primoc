@@ -16,5 +16,5 @@ PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=htc_primoc BUILD_FINGERPRINT=virgin
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.goo.developerid=gannon5197 \
-    ro.goo.rom=cm_$(TARGET_PRODUCT) \
+    ro.goo.rom=cm_$(TARGET_PRODUCT)-ion \
     ro.goo.version=$(shell date +%s)

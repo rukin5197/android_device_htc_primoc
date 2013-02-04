@@ -137,8 +137,3 @@ $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 PRODUCT_NAME := htc_primoc
 PRODUCT_DEVICE := primoc
 PRODUCT_MODEL := Full Android on PrimoC
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.goo.developerid=gannon5197 \
-    ro.goo.rom=aokp4.2_$(TARGET_PRODUCT) \
-    ro.goo.version=$(shell date +%s)
