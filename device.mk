@@ -20,15 +20,14 @@ $(call inherit-product, device/htc/msm7x30-common/msm7x30.mk)
 # The gps config appropriate for this device
 
 PRODUCT_COPY_FILES += \
-    device/htc/primoc/prebuilt/etc/gps.conf:system/etc/gps.conf
+    device/htc/primoc/configs/gps.conf:system/etc/gps.conf
 
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
 
 PRODUCT_COPY_FILES += \
-    device/htc/primoc/prebuilt/root/init.primoc.rc:root/init.primoc.rc \
-    device/htc/primoc/prebuilt/root/init.usb.rc:root/init.usb.rc \
-    device/htc/primoc/prebuilt/root/ueventd.primoc.rc:root/ueventd.primoc.rc \
-    device/htc/primoc/prebuilt/root/fstab.primoc:root/fstab.primoc 
+    device/htc/primoc/ramdisk/init.primoc.rc:root/init.primoc.rc \
+    device/htc/primoc/ramdisk/ueventd.primoc.rc:root/ueventd.primoc.rc \
+    device/htc/primoc/ramdisk/fstab.primoc:root/fstab.primoc
 
 ## (2) Also get non-open-source GSM-specific aspects if available
 $(call inherit-product-if-exists, vendor/htc/primoc/primoc-vendor.mk)
@@ -70,62 +69,75 @@ DEVICE_PACKAGE_OVERLAYS += device/htc/primoc/overlay
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml
 
-# Camera
-PRODUCT_PACKAGES += \
-    Camera
-
-# GPS / Lights / Sensors
+# GPS / BT /Lights / Sensors
 PRODUCT_PACKAGES += \
     libbt-vendor \
     gps.primoc \
     lights.primoc \
     sensors.primoc
 
-# idc files
+# Input device config
 PRODUCT_COPY_FILES += \
-    device/htc/primoc/prebuilt/usr/idc/himax-touchscreen.idc:system/usr/idc/himax-touchscreen.idc \
-    device/htc/primoc/prebuilt/usr/idc/primoc-keypad.idc:system/usr/idc/primoc-keypad.idc \
-    device/htc/primoc/prebuilt/usr/idc/qwerty.idc:system/usr/idc/qwerty.idc \
-    device/htc/primoc/prebuilt/usr/idc/qwerty2.idc:system/usr/idc/qwerty2.idc \
-    device/htc/primoc/prebuilt/usr/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
-    device/htc/primoc/prebuilt/usr/keychars/Generic.kcm:system/usr/keychars/Generic.kcm \
-    device/htc/primoc/prebuilt/usr/keychars/qwerty.kcm:system/usr/keychars/qwerty.kcm \
-    device/htc/primoc/prebuilt/usr/keychars/qwerty2.kcm:system/usr/keychars/qwerty2.kcm \
-    device/htc/primoc/prebuilt/usr/keychars/Virtual.kcm:system/usr/keychars/Virtual.kcm \
-    device/htc/primoc/prebuilt/usr/keylayout/himax-touchscreen.kl:system/usr/keylayout/himax-touchscreen.kl \
-    device/htc/primoc/prebuilt/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
-    device/htc/primoc/prebuilt/usr/keylayout/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl \
-    device/htc/primoc/prebuilt/usr/keylayout/primoc-keypad.kl:system/usr/keylayout/primoc-keypad.kl \
-    device/htc/primoc/prebuilt/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
-    device/htc/primoc/prebuilt/usr/keylayout/synaptics-rmi-touchscreen.kl:system/usr/keylayout/synaptics-rmi-touchscreen.kl
+    device/htc/primoc/idc/himax-touchscreen.idc:system/usr/idc/himax-touchscreen.idc \
+    device/htc/primoc/idc/primoc-keypad.idc:system/usr/idc/primoc-keypad.idc \
+    device/htc/primoc/idc/qwerty.idc:system/usr/idc/qwerty.idc \
+    device/htc/primoc/idc/qwerty2.idc:system/usr/idc/qwerty2.idc \
+    device/htc/primoc/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc
 
+# Keylayouts and keychars
 PRODUCT_COPY_FILES += \
-    device/htc/primoc/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
-    device/htc/primoc/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
+    device/htc/primoc/keylayout/keychars/Generic.kcm:system/usr/keychars/Generic.kcm \
+    device/htc/primoc/keylayout/keychars/qwerty.kcm:system/usr/keychars/qwerty.kcm \
+    device/htc/primoc/keylayout/keychars/qwerty2.kcm:system/usr/keychars/qwerty2.kcm \
+    device/htc/primoc/keylayout/keychars/Virtual.kcm:system/usr/keychars/Virtual.kcm \
+    device/htc/primoc/keylayout/keylayout/himax-touchscreen.kl:system/usr/keylayout/himax-touchscreen.kl \
+    device/htc/primoc/keylayout/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
+    device/htc/primoc/keylayout/keylayout/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl \
+    device/htc/primoc/keylayout/keylayout/primoc-keypad.kl:system/usr/keylayout/primoc-keypad.kl \
+    device/htc/primoc/keylayout/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
+    device/htc/primoc/keylayout/keylayout/synaptics-rmi-touchscreen.kl:system/usr/keylayout/synaptics-rmi-touchscreen.kl
 
-# media config xml file
+# Configuration files
 PRODUCT_COPY_FILES += \
-    device/htc/primoc/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
-    device/htc/primoc/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf \
-    device/htc/primoc/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml	
+    device/htc/primoc/configs/vold.fstab:system/etc/vold.fstab \
+    device/htc/primoc/configs/apns-conf.xml:system/etc/apns-conf.xml
+
+# Inherit qcom proprietary blobs
+$(call inherit-product, vendor/qcom/proprietary/qcom-vendor.mk)
+
+# Media Profiles
+PRODUCT_COPY_FILES += \
+    device/htc/primoc/configs/media_profiles.xml:system/etc/media_profiles.xml
+
+# ACDB
+PRODUCT_COPY_FILES += \
+    device/htc/primoc/configs/default.acdb:system/etc/firmware/default.acdb \
+    device/htc/primoc/configs/default_org.acdb:system/etc/firmware/default_org.acdb
+
+# Audio DSP Profiles
+PRODUCT_COPY_FILES += \
+    device/htc/primoc/dsp/AdieHWCodec.csv:system/etc/AdieHWCodec.csv \
+    device/htc/primoc/dsp/AIC3254_REG.csv:system/etc/AIC3254_REG.csv \
+    device/htc/primoc/dsp/CodecDSPID.txt:system/etc/CodecDSPID.txt \
+    device/htc/primoc/dsp/TPA2051_CFG.csv:system/etc/TPA2051_CFG.csv 
+	
 
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
 
 # BT vendor configuration
 PRODUCT_COPY_FILES += \
-    device/htc/primoc/prebuilt/etc/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf \
+    device/htc/primoc/configs/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
-# Kernel modules
-#PRODUCT_COPY_FILES += \
+# HTC BT audio config
+PRODUCT_COPY_FILES += device/htc/primoc/configs/AudioBTID.csv:system/etc/AudioBTID.csv
 
+# Kernel
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/htc/primoc/prebuilt/root/kernel
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
+        LOCAL_KERNEL := device/htc/primoc/prebuilt/kernel/kernel
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
+endif
 
 # HTC Audio
 $(call inherit-product, device/htc/primoc/media_a1026.mk)
@@ -133,7 +145,3 @@ $(call inherit-product, device/htc/primoc/media_htcaudio.mk)
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
-
-PRODUCT_NAME := htc_primoc
-PRODUCT_DEVICE := primoc
-PRODUCT_MODEL := Full Android on PrimoC

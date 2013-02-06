@@ -1,4 +1,4 @@
-# Copyright (C) 2009 The Android Open Source Project
+# Copyright (C) 2010 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,9 +13,16 @@
 # limitations under the License.
 
 #
-# This file lists the product definition files that define
-# configurations which are actually buildable (e.g. through lunch)
+# Emulator keyboard configuration file #1.
 #
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/device.mk
+touch.deviceType = touchScreen
+touch.orientationAware = 1
+
+keyboard.layout = qwerty
+keyboard.characterMap = qwerty
+keyboard.orientationAware = 1
+keyboard.builtIn = 1
+
+cursor.mode = navigation
+cursor.orientationAware = 1
