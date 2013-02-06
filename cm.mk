@@ -1,5 +1,5 @@
 # Inherit AOSP device configuration for primoc.
-$(call inherit-product, device/htc/primoc/full_primoc.mk)
+$(call inherit-product, device/htc/primoc/device.mk)
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
