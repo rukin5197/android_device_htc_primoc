@@ -49,6 +49,10 @@ TARGET_PROVIDES_LIBLIGHTS := true
 
 TARGET_NO_HW_VSYNC := true
 
+# ION
+TARGET_USES_ION := true
+BOARD_HAVE_OLD_ION_API := true
+
 # cat /proc/emmc
 #dev:        size     erasesize name
 #mmcblk0p17: 00040000 00000200 "misc"
