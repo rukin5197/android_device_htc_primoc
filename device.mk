@@ -17,6 +17,9 @@
 # common msm7x30 configs
 $(call inherit-product, device/htc/msm7x30-common/msm7x30.mk)
 
+# GPS config
+PRODUCT_COPY_FILES += device/htc/ace/configs/gps.conf:system/etc/gps.conf
+
 # Ramdisk
 PRODUCT_COPY_FILES += \
     device/htc/primoc/ramdisk/init.primoc.rc:root/init.primoc.rc \
@@ -108,8 +111,7 @@ $(call inherit-product, vendor/qcom/proprietary/qcom-vendor.mk)
 
 # Media Profiles
 PRODUCT_COPY_FILES += \
-    device/htc/primoc/configs/media_profiles.xml:system/etc/media_profiles.xml \
-    device/htc/primoc/configs/media_codecs.xml:system/etc/media_codecs.xml
+    device/htc/primoc/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # ACDB
 PRODUCT_COPY_FILES += \
