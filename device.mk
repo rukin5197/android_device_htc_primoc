@@ -18,7 +18,7 @@
 $(call inherit-product, device/htc/msm7x30-common/msm7x30.mk)
 
 # GPS config
-PRODUCT_COPY_FILES += device/htc/ace/configs/gps.conf:system/etc/gps.conf
+PRODUCT_COPY_FILES += device/htc/primoc/configs/gps.conf:system/etc/gps.conf
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
