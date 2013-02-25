@@ -138,6 +138,10 @@ PRODUCT_COPY_FILES += \
     device/htc/primoc/firmware/fw_bcm4330_p2p_b2.bin:system/vendor/firmware/fw_bcm4330_p2p_b2.bin \
     device/htc/primoc/firmware/fw_bcm4330_p2p_b1.bin:system/vendor/firmware/fw_bcm4330_p2p_b1.bin
 
+# Bluetooth Vendor Configuration
+PRODUCT_COPY_FULES += \
+    device/htc/primoc/configs/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
+
 # HTC BT audio config
 PRODUCT_COPY_FILES += \
     device/htc/primoc/configs/AudioBTID.csv:system/etc/AudioBTID.csv
