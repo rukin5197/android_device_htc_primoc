@@ -17,23 +17,19 @@
 # common msm7x30 configs
 $(call inherit-product, device/htc/msm7x30-common/msm7x30.mk)
 
-# The gps config appropriate for this device
+# GPS config
+PRODUCT_COPY_FILES += device/htc/primoc/configs/gps.conf:system/etc/gps.conf
 
-PRODUCT_COPY_FILES += \
-    device/htc/primoc/configs/gps.conf:system/etc/gps.conf
-
-## (1) First, the most specific values, i.e. the aspects that are specific to GSM
-
+# Ramdisk
 PRODUCT_COPY_FILES += \
     device/htc/primoc/ramdisk/init.primoc.rc:root/init.primoc.rc \
     device/htc/primoc/ramdisk/ueventd.primoc.rc:root/ueventd.primoc.rc \
-    device/htc/primoc/ramdisk/fstab.primoc:root/fstab.primoc \
-    device/htc/primoc/ramdisk/default.prop:root/default.prop
+    device/htc/primoc/ramdisk/fstab.primoc:root/fstab.primoc
 
-## (2) Also get non-open-source GSM-specific aspects if available
+# Vendor
 $(call inherit-product-if-exists, vendor/htc/primoc/primoc-vendor.mk)
 
-## (3)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
+# Misc. property overrides
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.google.locationfeatures=1 \
     ro.com.google.networklocation=1 \
@@ -70,7 +66,7 @@ DEVICE_PACKAGE_OVERLAYS += device/htc/primoc/overlay
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml
 
-# GPS / BT /Lights / Sensors
+# GPS / BT / Lights / Sensors
 PRODUCT_PACKAGES += \
     libbt-vendor \
     gps.primoc \
@@ -106,10 +102,9 @@ PRODUCT_COPY_FILES += \
     device/htc/primoc/keylayout/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
     device/htc/primoc/keylayout/keylayout/synaptics-rmi-touchscreen.kl:system/usr/keylayout/synaptics-rmi-touchscreen.kl
 
-# Configuration files
+# Mounting ALL the things
 PRODUCT_COPY_FILES += \
-    device/htc/primoc/configs/vold.fstab:system/etc/vold.fstab \
-    device/htc/primoc/configs/apns-conf.xml:system/etc/apns-conf.xml
+    device/htc/primoc/configs/vold.fstab:system/etc/vold.fstab
 
 # Inherit qcom proprietary blobs
 $(call inherit-product, vendor/qcom/proprietary/qcom-vendor.mk)
@@ -117,7 +112,7 @@ $(call inherit-product, vendor/qcom/proprietary/qcom-vendor.mk)
 # Media Profiles
 PRODUCT_COPY_FILES += \
     device/htc/primoc/configs/media_profiles.xml:system/etc/media_profiles.xml \
-    device/htc/primoc/configs/media_codecs.xml:system/etc/media_codecs.xml
+    device/htc/primoc/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml
 
 # ACDB
 PRODUCT_COPY_FILES += \
@@ -136,21 +131,21 @@ $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330
 
 # BCM4330 firmware
 PRODUCT_COPY_FILES += \
-    device/htc/primoc/firmware/bcm4330.hcd:system/etc/firmware/bcm4330.hcd \
-    device/htc/primoc/firmware/fw_bcm4330_apsta_b1.bin:system/etc/firmware/fw_bcm4330_apsta_b1.bin \
-    device/htc/primoc/firmware/fw_bcm4330_apsta_b2.bin:system/etc/firmware/fw_bcm4330_apsta_b2.bin \
-    device/htc/primoc/firmware/fw_bcm4330_b2.bin:system/etc/firmware/fw_bcm4330_b2.bin \
-    device/htc/primoc/firmware/fw_bcm4330_b1.bin:system/etc/firmware/fw_bcm4330_b1.bin \
-    device/htc/primoc/firmware/fw_bcm4330_p2p_b2.bin:system/etc/firmware/fw_bcm4330_p2p_b2.bin \
-    device/htc/primoc/firmware/fw_bcm4330_p2p_b1.bin:system/etc/firmware/fw_bcm4330_p2p_b1.bin \
-    device/htc/primoc/firmware/calibration:system/etc/calibration
+    device/htc/primoc/firmware/bcm4330.hcd:system/vendor/firmware/bcm4330.hcd \
+    device/htc/primoc/firmware/fw_bcm4330_apsta_b1.bin:system/vendor/firmware/fw_bcm4330_apsta_b1.bin \
+    device/htc/primoc/firmware/fw_bcm4330_apsta_b2.bin:system/vendor/firmware/fw_bcm4330_apsta_b2.bin \
+    device/htc/primoc/firmware/fw_bcm4330_b2.bin:system/vendor/firmware/fw_bcm4330_b2.bin \
+    device/htc/primoc/firmware/fw_bcm4330_b1.bin:system/vendor/firmware/fw_bcm4330_b1.bin \
+    device/htc/primoc/firmware/fw_bcm4330_p2p_b2.bin:system/vendor/firmware/fw_bcm4330_p2p_b2.bin \
+    device/htc/primoc/firmware/fw_bcm4330_p2p_b1.bin:system/vendor/firmware/fw_bcm4330_p2p_b1.bin
 
-# BT vendor configuration
+# Bluetooth Vendor Configuration
 PRODUCT_COPY_FILES += \
     device/htc/primoc/configs/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
 # HTC BT audio config
-PRODUCT_COPY_FILES += device/htc/primoc/configs/AudioBTID.csv:system/etc/AudioBTID.csv
+PRODUCT_COPY_FILES += \
+    device/htc/primoc/configs/AudioBTID.csv:system/etc/AudioBTID.csv
 
 # Kernel
 ifeq ($(TARGET_PREBUILT_KERNEL),)
