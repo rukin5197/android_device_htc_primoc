@@ -1,13 +1,13 @@
 # Inherit AOSP device configuration for primoc.
 $(call inherit-product, device/htc/primoc/device.mk)
 
-# Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Inherit some common COS stuff.
+$(call inherit-product, vendor/cos/config/common_full_phone.mk)
 
-# Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/cdma.mk)
+# Inherit some common COS stuff.
+$(call inherit-product, vendor/cos/config/cdma.mk)
 
-PRODUCT_NAME := cm_primoc
+PRODUCT_NAME := cos_primoc
 PRODUCT_BRAND := htc
 PRODUCT_DEVICE := primoc
 PRODUCT_MODEL := One V
@@ -16,5 +16,5 @@ PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=htc_primoc BUILD_FINGERPRINT=virgin
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.goo.developerid=gannon5197 \
-    ro.goo.rom=cm_$(TARGET_PRODUCT)-ion \
+    ro.goo.rom=cos_$(TARGET_PRODUCT) \
     ro.goo.version=$(shell date +%s)
