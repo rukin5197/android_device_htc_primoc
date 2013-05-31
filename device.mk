@@ -111,10 +111,6 @@ PRODUCT_COPY_FILES += \
 # Inherit qcom proprietary blobs
 $(call inherit-product, vendor/qcom/proprietary/qcom-vendor.mk)
 
-# Media Profiles
-PRODUCT_COPY_FILES += \
-    device/htc/primoc/configs/media_profiles.xml:system/etc/media_profiles.xml
-
 # ACDB
 PRODUCT_COPY_FILES += \
     device/htc/primoc/configs/default.acdb:system/etc/firmware/default.acdb \
