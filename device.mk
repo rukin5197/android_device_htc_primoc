@@ -153,6 +153,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 endif
 
+# Turn off ZRAM by default
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.zram.default=0
+
 # HTC Audio
 $(call inherit-product, device/htc/primoc/media_a1026.mk)
 $(call inherit-product, device/htc/primoc/media_htcaudio.mk)
