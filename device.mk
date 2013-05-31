@@ -72,6 +72,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libbt-vendor \
     gps.primoc \
+    librpc \
     lights.primoc \
     sensors.primoc
 
