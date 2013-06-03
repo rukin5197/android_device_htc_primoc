@@ -63,7 +63,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 DEVICE_PACKAGE_OVERLAYS += device/htc/primoc/overlay
 
-# lower the increment
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml
@@ -72,6 +71,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libbt-vendor \
     gps.primoc \
+    librpc \
     lights.primoc \
     sensors.primoc
 
@@ -110,11 +110,6 @@ PRODUCT_COPY_FILES += \
 
 # Inherit qcom proprietary blobs
 $(call inherit-product, vendor/qcom/proprietary/qcom-vendor.mk)
-
-# Media Profiles
-PRODUCT_COPY_FILES += \
-    device/htc/primoc/configs/media_profiles.xml:system/etc/media_profiles.xml \
-    device/htc/primoc/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml
 
 # ACDB
 PRODUCT_COPY_FILES += \
@@ -157,6 +152,10 @@ ifeq ($(TARGET_PREBUILT_KERNEL),)
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 endif
+
+# Turn off ZRAM by default
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.zram.default=0
 
 # HTC Audio
 $(call inherit-product, device/htc/primoc/media_a1026.mk)
