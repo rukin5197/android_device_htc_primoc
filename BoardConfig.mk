@@ -89,6 +89,7 @@ BOARD_USES_QCOM_LEGACY_CAM_PARAMS := true
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/primoc/bluetooth
+BOARD_BLUEDROID_VENDOR_CONF := device/htc/primoc/configs/libbt_vndcfg.txt
 
 # No SDK blobs
 BUILD_EMULATOR_SENSORS_MODULE := false
