@@ -70,6 +70,10 @@ TARGET_PREBUILT_KERNEL := device/htc/primoc/prebuilt/root/kernel
 BUILD_KERNEL := true
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 
+# Recovery
+TARGET_RECOVERY_FSTAB := device/htc/primoc/ramdisk/fstab.primoc
+RECOVERY_FSTAB_VERSION := 2
+
 # PMEM
 TARGET_USES_PMEM := true
 
