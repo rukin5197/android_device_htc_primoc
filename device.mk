@@ -36,7 +36,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.google.gmsversion=2.3_r3 \
     dalvik.vm.lockprof.threshold=500 \
     dalvik.vm.dexopt-flags=m=y \
-    ro.sf.lcd_density=240
+    ro.sf.lcd_density=240 \
+    dalvik.vm.debug.alloc=0
 	
 # Carrier Info
 CDMA_GOOGLE_BASE := android-virgin-us
@@ -55,8 +56,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     gsm.sim.operator.alpha=$(CDMA_CARRIER_ALPHA) \
     gsm.sim.operator.numeric=$(CDMA_CARRIER_NUMERIC) \
     gsm.operator.alpha=$(CDMA_CARRIER_ALPHA) \
-    gsm.operator.numeric=$(CDMA_CARRIER_NUMERIC) \
-    dalvik.vm.debug.alloc=0
+    gsm.operator.numeric=$(CDMA_CARRIER_NUMERIC)
 
 # Override /proc/sys/vm/dirty_ratio on UMS
 PRODUCT_PROPERTY_OVERRIDES += \
