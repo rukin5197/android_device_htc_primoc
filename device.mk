@@ -55,7 +55,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     gsm.sim.operator.alpha=$(CDMA_CARRIER_ALPHA) \
     gsm.sim.operator.numeric=$(CDMA_CARRIER_NUMERIC) \
     gsm.operator.alpha=$(CDMA_CARRIER_ALPHA) \
-    gsm.operator.numeric=$(CDMA_CARRIER_NUMERIC)
+    gsm.operator.numeric=$(CDMA_CARRIER_NUMERIC) \
+    dalvik.vm.debug.alloc=0
 
 # Override /proc/sys/vm/dirty_ratio on UMS
 PRODUCT_PROPERTY_OVERRIDES += \
