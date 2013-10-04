@@ -68,6 +68,8 @@ TARGET_KERNEL_CONFIG := primoc_defconfig
 #BUILD_KERNEL := true
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 
+TARGET_ARCH_LOWMEM := true
+
 # Recovery
 TARGET_RECOVERY_FSTAB := device/htc/primoc/ramdisk/fstab.primoc
 RECOVERY_FSTAB_VERSION := 2
