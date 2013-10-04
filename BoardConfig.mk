@@ -42,8 +42,6 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 TARGET_PROVIDES_LIBLIGHTS := true
 
-TARGET_NO_HW_VSYNC := true
-
 # cat /proc/emmc
 #dev:        size     erasesize name
 #mmcblk0p17: 00040000 00000200 "misc"
@@ -74,10 +72,6 @@ TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 TARGET_RECOVERY_FSTAB := device/htc/primoc/ramdisk/fstab.primoc
 RECOVERY_FSTAB_VERSION := 2
 
-# PMEM
-TARGET_USES_PMEM := true
-BOARD_USE_QCOM_PMEM := true
-
 # File System
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
@@ -90,12 +84,6 @@ BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun0/file
 
-BOARD_USES_QCOM_LEGACY_CAM_PARAMS := true
-
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/htc/primoc/bluetooth
 BOARD_BLUEDROID_VENDOR_CONF := device/htc/primoc/configs/libbt_vndcfg.txt
-
-# No SDK blobs
-BUILD_EMULATOR_SENSORS_MODULE := false
-BUILD_EMULATOR_GPS_MODULE := false
