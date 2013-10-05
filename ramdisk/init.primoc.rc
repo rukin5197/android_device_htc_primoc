@@ -22,6 +22,12 @@ on fs
    #mount all the things
    mount_all fstab.primoc
 
+# enable usb adb mode
+    write /dev/usb_device_mode msc_adb
+    write /tmp/usbd_current_state usb_mode_charge_adb
+    chmod 0666 /tmp/usbd_current_state
+    start adbd
+
 on emmc-fs
    #mount all the things
    mount_all fstab.primoc

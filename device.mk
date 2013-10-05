@@ -22,6 +22,7 @@ PRODUCT_COPY_FILES += device/htc/primoc/configs/gps.conf:system/etc/gps.conf
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
+    device/htc/primoc/ramdisk/default.prop:root/default.prop \
     device/htc/primoc/ramdisk/init.primoc.rc:root/init.primoc.rc \
     device/htc/primoc/ramdisk/ueventd.primoc.rc:root/ueventd.primoc.rc \
     device/htc/primoc/ramdisk/fstab.primoc:root/fstab.primoc
