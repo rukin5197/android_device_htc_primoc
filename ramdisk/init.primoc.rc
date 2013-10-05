@@ -199,3 +199,12 @@ service akmd /system/bin/akmd
 service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p13 /dev/block/mmcblk0p14
     class core
     user root
+
+on property:ro.logcat.on.boot=1
+    start logcat
+
+service logcat /system/bin/logcat -f /data/media/logcat
+    class main
+    user root
+    disabled
+    oneshot
