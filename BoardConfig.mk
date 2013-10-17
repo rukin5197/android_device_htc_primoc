@@ -62,6 +62,7 @@ BOARD_FLASH_BLOCK_SIZE := 262144
 TARGET_RELEASETOOLS_EXTENSIONS := device/htc/common
 
 # Kernel
+TARGET_SPECIFIC_HEADER_PATH := device/htc/primoc/include
 TARGET_KERNEL_SOURCE := kernel/htc/primoc
 TARGET_KERNEL_CONFIG := primoc_defconfig
 #TARGET_PREBUILT_KERNEL := device/htc/primoc/prebuilt/root/kernel
